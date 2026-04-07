@@ -3,6 +3,7 @@ import { Outcomes } from "@/components/outcomes";
 import { Interlude } from "@/components/interlude";
 import { About } from "@/components/about";
 import { ContactSection } from "@/components/contact-section";
+import { Footer } from "@/components/footer";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Interlude />
       <About />
       <ContactSection />
+      <Footer />
     </main>
   );
 }
