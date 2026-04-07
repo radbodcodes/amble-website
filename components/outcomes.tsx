@@ -48,7 +48,7 @@ export function Outcomes() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
           {outcomes.map((item, i) => (
             <AnimateOnScroll key={i} delay={i * 0.1}>
-              <div className="bg-card border border-primary/10 rounded-lg p-8 md:p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(26,22,20,0.06)]">
+              <div className="bg-card border border-primary/10 rounded-lg p-6 md:p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(26,22,20,0.06)]">
                 <p className="text-[13px] font-medium text-primary mb-2.5">
                   {item.forLine}
                 </p>
