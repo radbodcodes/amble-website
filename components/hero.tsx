@@ -17,13 +17,7 @@ export function Hero() {
       />
 
       {/* Warm copper overlay */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(140,82,42,0.88) 0%, rgba(168,103,62,0.82) 30%, rgba(180,110,65,0.78) 60%, rgba(140,82,42,0.85) 100%)",
-        }}
-      />
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(140,82,42,0.93)_0%,rgba(168,103,62,0.88)_30%,rgba(180,110,65,0.85)_60%,rgba(140,82,42,0.90)_100%)]" />
 
       {/* Star motifs */}
       <StarMotif size={28} className="absolute top-[18%] right-[14%] opacity-20 z-[1]" />
@@ -49,9 +43,8 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }}
         >
-          We partner with forward-thinking organizations in traditional
-          industries to turn AI curiosity into real strategy, and strategy into
-          stories that stick.
+          We partner with forward-thinking organizations who want to turn
+          their AI curiosity into AI strategy.
         </motion.p>
 
         <motion.a
@@ -61,7 +54,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: "easeOut", delay: 0.4 }}
         >
-          Let&apos;s Walk Together
+          Let&apos;s Walk
         </motion.a>
       </div>
     </section>

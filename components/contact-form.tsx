@@ -84,7 +84,7 @@ export function ContactForm() {
         disabled={isPending}
         className="self-start bg-primary hover:bg-primary-mid text-white rounded-sm px-9 py-4 h-auto text-[15px] font-semibold tracking-wide"
       >
-        {isPending ? "Sending..." : "Send Message"}
+        {isPending ? "Sending..." : "Take the First Step"}
       </Button>
     </form>
   );

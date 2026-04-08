@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const navLinks = [
   { label: "What We Do", href: "#outcomes" },
@@ -33,8 +34,15 @@ export function Nav() {
       }`}
     >
       <div className="flex items-center justify-between px-6 py-5 md:px-12 lg:px-20 lg:py-6">
-        <a href="#" className="font-serif text-2xl font-semibold text-white">
-          Amble&Co
+        <a href="#">
+          <Image
+            src="/logo-white.png"
+            alt="Amble & Co."
+            width={140}
+            height={20}
+            className="h-5 w-auto md:h-6"
+            priority
+          />
         </a>
 
         {/* Desktop links */}
