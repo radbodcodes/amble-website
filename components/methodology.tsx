@@ -11,12 +11,12 @@ const steps = [
   {
     label: "Map",
     description:
-      "We build the roadmap together. Clear priorities, real timelines, and a plan your team helped shape.",
+      "We build the roadmap together. Clear priorities, real timelines, and a plan your team helped shape so they own it.",
   },
   {
     label: "Build",
     description:
-      "We develop the frameworks, tools, and capabilities your team needs. Not a deck you\u2019ll never open. Working tools.",
+      "We develop the frameworks, tools, and capabilities your team needs. Not a deck you\u2019ll never open. Functional tools.",
   },
   {
     label: "Launch",
@@ -26,7 +26,7 @@ const steps = [
   {
     label: "Evolve",
     description:
-      "We stay as your strategy adapts. Ongoing iteration, capability building, and support as your team and goals grow.",
+      "We stay as your strategy adapts. Ongoing iteration, capability building, and support as your team grows.",
   },
 ];
 
@@ -38,11 +38,11 @@ function StepCard({ step, delay }: { step: (typeof steps)[number]; delay: number
           {step.label[0]}
         </span>
         <div className="relative z-[1]">
-          <h3 className="font-serif text-xl md:text-[26px] font-medium text-text mb-3">
+          <h3 className="font-serif text-xl md:text-[24px] font-medium text-text mb-3">
             <span className="text-primary font-semibold">{step.label[0]}</span>
             {step.label.slice(1)}
           </h3>
-          <p className="text-[17px] text-text-secondary leading-relaxed">
+          <p className="text-[16px] text-text-secondary leading-relaxed">
             {step.description}
           </p>
         </div>
@@ -59,7 +59,7 @@ export function Methodology() {
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary mb-4">
             How We Work
           </p>
-          <h2 className="font-serif text-3xl md:text-[42px] font-normal text-text leading-[1.2] mb-16">
+          <h2 className="font-serif text-3xl md:text-[48px] font-normal text-text leading-[1.2] mb-16">
             We named the company after the process.
             <br />
             Or maybe it was the other way around.

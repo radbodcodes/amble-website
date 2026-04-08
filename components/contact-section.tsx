@@ -12,14 +12,14 @@ export function ContactSection() {
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary mb-4">
               Get In Touch
             </p>
-            <h2 className="font-serif text-3xl md:text-[42px] font-normal text-text leading-[1.2] mb-5">
+            <h2 className="font-serif text-3xl md:text-[48px] font-normal text-text leading-[1.2] mb-5">
               Ready to Walk?
             </h2>
-            <p className="text-[17px] text-text-secondary leading-[1.7] mb-8">
+            <p className="text-[16px] text-text-secondary leading-[1.7] mb-8">
               Tell us where you are and what&apos;s in the way. No paperwork
               needed. Just a conversation about what matters next.
             </p>
-            <p className="text-[15px] font-medium text-primary">
+            <p className="text-[16px] font-medium text-primary">
               Or email us directly:{" "}
               <a
                 href="mailto:letswalk@ambleandco.com"

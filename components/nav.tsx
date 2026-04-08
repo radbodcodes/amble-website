@@ -51,7 +51,7 @@ export function Nav() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-[15px] font-medium text-white/80 hover:text-white transition-colors"
+                className="text-[16px] font-medium text-white/80 hover:text-white transition-colors"
               >
                 {link.label}
               </a>

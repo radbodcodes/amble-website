@@ -21,17 +21,17 @@ export function About() {
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary-pale mb-4">
             About
           </p>
-          <h2 className="font-serif text-3xl md:text-[42px] font-normal text-white leading-[1.2] mb-6">
+          <h2 className="font-serif text-3xl md:text-[48px] font-normal text-white leading-[1.2] mb-6">
             We&apos;ve been where you are.
           </h2>
         </AnimateOnScroll>
         <AnimateOnScroll delay={0.1}>
-          <p className="text-[17px] text-white/70 leading-[1.75] mb-4">
+          <p className="text-[16px] text-white/70 leading-[1.75] mb-4">
             Our team has built companies, led strategy inside corporates, and
             advised startups from first pitch to scale. We&apos;ve sat in the
             boardroom, the war room, and the founder&apos;s living room.
           </p>
-          <p className="text-[17px] text-white/70 leading-[1.75]">
+          <p className="text-[16px] text-white/70 leading-[1.75]">
             That range matters. Whether you&apos;re a leadership team inside a
             large organization trying to modernize, or a founder figuring out
             what comes next, we&apos;ve been on your side of the table. We bring

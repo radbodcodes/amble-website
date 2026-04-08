@@ -26,7 +26,7 @@ export function ContactForm() {
     <form action={formAction} className="flex flex-col gap-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="name" className="text-[13px] font-medium text-text">
+          <label htmlFor="name" className="text-[12px] font-medium text-text">
             Name
           </label>
           <Input
@@ -39,7 +39,7 @@ export function ContactForm() {
           />
         </div>
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="company" className="text-[13px] font-medium text-text">
+          <label htmlFor="company" className="text-[12px] font-medium text-text">
             Company
           </label>
           <Input
@@ -52,7 +52,7 @@ export function ContactForm() {
         </div>
       </div>
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="email" className="text-[13px] font-medium text-text">
+        <label htmlFor="email" className="text-[12px] font-medium text-text">
           Email
         </label>
         <Input
@@ -65,7 +65,7 @@ export function ContactForm() {
         />
       </div>
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="message" className="text-[13px] font-medium text-text">
+        <label htmlFor="message" className="text-[12px] font-medium text-text">
           What&apos;s on your mind?
         </label>
         <Textarea
@@ -82,7 +82,7 @@ export function ContactForm() {
       <Button
         type="submit"
         disabled={isPending}
-        className="self-start bg-primary hover:bg-primary-mid text-white rounded-sm px-9 py-4 h-auto text-[15px] font-semibold tracking-wide"
+        className="self-start bg-primary hover:bg-primary-mid text-white rounded-sm px-9 py-4 h-auto text-[16px] font-semibold tracking-wide"
       >
         {isPending ? "Sending..." : "Take the First Step"}
       </Button>

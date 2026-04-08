@@ -11,7 +11,7 @@ export function Footer() {
           height={17}
           className="h-4 w-auto opacity-80"
         />
-        <span className="text-[13px] text-white/45">
+        <span className="text-[12px] text-white/45">
           &copy; {new Date().getFullYear()} Amble & Co. &middot;{" "}
           <a
             href="mailto:letswalk@ambleandco.com"
