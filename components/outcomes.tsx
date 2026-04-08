@@ -16,10 +16,10 @@ const outcomes = [
       "Growth stalls when the vision is unclear or the plan doesn\u2019t hold. We facilitate structured engagements that produce a clear vision, real priorities, and an action plan your team can move on.",
   },
   {
-    forLine: "Teams who aim to perform at a higher level",
+    forLine: "Teams who aim to perform at higher levels",
     headline: "Team Training and Communication",
     description:
-      "Strategy fails when teams can\u2019t deliver it together. We run workshops on communication styles, pitch skills, and audience analysis that give your team practical tools they use the same day.",
+      "Strategy fails when teams can\u2019t deliver it together. We run workshops on communication styles, pitch skills, and audience analysis that give your team practical tools they can use the same day.",
   },
   {
     forLine: "Companies that want a partner, not a consultant",

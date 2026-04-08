@@ -43,8 +43,8 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }}
         >
-          We partner with forward-thinking organizations who want to turn
-          their AI curiosity into AI strategy.
+          We partner with forward-thinking organizations that want to
+          transform AI curiosity into AI strategy.
         </motion.p>
 
         <motion.a
