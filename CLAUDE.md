@@ -31,6 +31,7 @@ Hero > Outcomes > Interlude > Methodology > About > ContactSection > Footer (see
 
 ## Dev Workflow
 - Dev server: `npm run dev -- -p 3456`
+- Add shadcn component: `npx shadcn@latest add <component>`
 - After editing any component: `kill $(lsof -t -i:3456); rm -rf .next; npm run dev -- -p 3456` — Turbopack caches server-rendered HTML and causes hydration errors if you skip this.
 - Wait for `GET / 200` in terminal before telling user to hard refresh.
 - Deploy: `git push origin main && npx vercel --prod`
