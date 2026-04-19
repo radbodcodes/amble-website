@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { label: "What We Do", href: "#outcomes" },
@@ -10,8 +11,12 @@ const navLinks = [
 ];
 
 export function Nav() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Preview variants bring their own nav
+  if (pathname?.startsWith("/preview")) return null;
 
   useEffect(() => {
     const hero = document.getElementById("hero");

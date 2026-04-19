@@ -1,0 +1,171 @@
+.editorial-root {
+  --copper: #A8673E;
+  --copper-deep: #6B3E1F;
+  --copper-mid: #C07A4A;
+  --copper-pale: #E2B08E;
+  --ink: #14100D;
+  --ink-soft: #4A3F38;
+  --cream: #F3EADB;
+  --cream-warm: #E8DAC4;
+  --oxblood: #5C2410;
+
+  background: var(--cream);
+  color: var(--ink);
+  cursor: none;
+  position: relative;
+}
+
+.editorial-root a,
+.editorial-root button {
+  cursor: none;
+}
+
+/* Heavy grain over the whole layout */
+.editorial-root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 200;
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0.75 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Paper texture under everything */
+.editorial-root::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(168,103,62,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 100%, rgba(92,36,16,0.06) 0%, transparent 45%);
+}
+
+.editorial-root .editorial {
+  font-family: var(--font-editorial), "Playfair Display", ui-serif, Georgia, serif;
+  letter-spacing: -0.03em;
+}
+
+.editorial-root .editorial-italic {
+  font-family: var(--font-editorial-italic), "Instrument Serif", ui-serif, Georgia, serif;
+  font-style: italic;
+  letter-spacing: 0;
+}
+
+.editorial-root .mono {
+  font-family: var(--font-editorial-mono), ui-monospace, monospace;
+  letter-spacing: 0;
+}
+
+.editorial-root .sans {
+  font-family: var(--font-sans), "DM Sans", sans-serif;
+}
+
+/* Drop cap */
+.editorial-root .drop-cap::first-letter {
+  float: left;
+  font-family: var(--font-editorial), serif;
+  font-size: 5.2em;
+  line-height: 0.82;
+  padding: 0.1em 0.1em 0 0;
+  font-weight: 900;
+  color: var(--copper);
+}
+
+/* Folio bars */
+.editorial-root .folio {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-editorial-mono), monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.editorial-root .folio::before,
+.editorial-root .folio::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+}
+
+/* Rules */
+.editorial-root hr.rule-thick {
+  border: none;
+  height: 4px;
+  background: var(--ink);
+  margin: 0;
+}
+.editorial-root hr.rule-thin {
+  border: none;
+  height: 1px;
+  background: var(--ink);
+  margin: 0;
+  opacity: 0.4;
+}
+.editorial-root hr.rule-copper {
+  border: none;
+  height: 2px;
+  background: var(--copper);
+  margin: 0;
+}
+
+/* Custom cursor */
+.editorial-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--copper);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s, height 0.25s, background 0.25s;
+  z-index: 300;
+}
+.editorial-cursor.hovering {
+  width: 60px;
+  height: 60px;
+  background: var(--oxblood);
+}
+
+/* Marquee */
+@keyframes ed-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.editorial-root .marquee {
+  animation: ed-marquee 40s linear infinite;
+}
+
+/* Reveal */
+@keyframes ed-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@supports (animation-timeline: view()) {
+  .editorial-root .scroll-reveal {
+    animation: ed-up 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 45%;
+  }
+}
+@supports not (animation-timeline: view()) {
+  .editorial-root .scroll-reveal {
+    animation: ed-up 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+}
+
+/* Halftone dots for accents */
+.editorial-root .halftone {
+  background-image: radial-gradient(circle at 1px 1px, rgba(20,16,13,0.7) 1px, transparent 0);
+  background-size: 6px 6px;
+}
