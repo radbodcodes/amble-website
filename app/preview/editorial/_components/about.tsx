@@ -3,66 +3,71 @@ import Image from "next/image";
 export function EditorialAbout() {
   return (
     <section
-      id="about"
-      className="relative overflow-hidden px-6 md:px-10 lg:px-14 py-24 md:py-32 bg-[#14100D] text-[#F3EADB] border-y-4 border-[#14100D]"
+      id="studio"
+      className="relative px-6 md:px-10 lg:px-14 pt-28 md:pt-40 pb-28 md:pb-40 bg-[color:var(--paper-warm)]"
     >
-      {/* Background crosswalk */}
-      <div className="absolute inset-0 opacity-20">
-        <Image
-          src="/Crosswalk.png"
-          alt=""
-          fill
-          className="object-cover grayscale contrast-[1.3]"
-        />
-      </div>
-      <div className="absolute inset-0 halftone opacity-10" />
-
-      <div className="relative z-[2]">
-        <div className="folio text-[#F3EADB] mb-14">
-          <span>Part Three</span>
-          <span>The Masthead</span>
+      <div className="max-w-[1320px] mx-auto">
+        <div className="text-center mb-20 md:mb-28 scroll-up">
+          <span className="chapter text-[color:var(--accent)]">— Part Three · The Studio —</span>
+          <h2 className="mt-8 display font-light text-[clamp(40px,6vw,96px)] leading-[1.02] text-[color:var(--ink)] tracking-[-0.025em] max-w-[1000px] mx-auto">
+            We&apos;ve been{" "}
+            <span className="italic" style={{ color: "var(--accent)" }}>where</span>{" "}
+            you are.
+          </h2>
         </div>
 
-        <div className="grid grid-cols-12 gap-6 items-start">
-          <div className="col-span-12 lg:col-span-5 scroll-reveal">
-            <h2 className="editorial text-[clamp(48px,8vw,128px)] leading-[0.94] text-[#F3EADB]">
-              We&apos;ve been
-            </h2>
-            <h2 className="editorial-italic text-[clamp(56px,9vw,140px)] leading-[0.94] text-[#E2B08E] mt-1">
-              where
-            </h2>
-            <h2 className="editorial text-[clamp(48px,8vw,128px)] leading-[0.94] text-[#F3EADB] mt-1">
-              you are.
-            </h2>
-          </div>
+        <hr className="double-rule mb-16 md:mb-20" />
 
-          <div className="col-span-12 lg:col-span-7 scroll-reveal space-y-8">
-            <hr className="rule-copper" />
-            <p className="serif text-[18px] md:text-[22px] leading-[1.7] text-[#F3EADB]/90 drop-cap">
+        <div className="grid grid-cols-12 gap-8 md:gap-12">
+          {/* Editorial photograph */}
+          <figure className="col-span-12 md:col-span-5 scroll-up">
+            <div className="relative aspect-[4/5] overflow-hidden">
+              <Image
+                src="/Crosswalk.png"
+                alt=""
+                fill
+                className="object-cover grayscale contrast-[1.1]"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_60%,rgba(31,26,20,0.25)_100%)]" />
+            </div>
+            <figcaption className="mt-3 flex items-baseline justify-between label italic text-[color:var(--ink-faint)]">
+              <span>Plate ii. Crosswalk, morning.</span>
+              <span className="chapter">Field notes</span>
+            </figcaption>
+          </figure>
+
+          {/* Editorial prose — two columns */}
+          <div className="col-span-12 md:col-span-7 scroll-up">
+            <p className="dropcap lede text-[color:var(--ink)]">
               Our team has built companies, led strategy inside corporates, and
-              advised startups from first pitch to scale. We&apos;ve sat in the
-              boardroom, the war room, and the founder&apos;s living room.
+              advised startups from first pitch to scale. We have sat in the
+              boardroom, the war room, and the founder&apos;s living room. That
+              range matters.
             </p>
-            <p className="serif text-[16px] md:text-[18px] leading-[1.75] text-[#F3EADB]/75">
-              That range matters. Whether you&apos;re a leadership team inside
-              a large organization trying to modernize, or a founder figuring
-              out what comes next, we bring frameworks from consulting,
-              instincts from building, and the patience that comes from
-              knowing there are no shortcuts.
+            <p className="mt-8 serif text-[17px] md:text-[18px] text-[color:var(--ink-soft)] leading-[1.8]">
+              Whether you&apos;re a leadership team inside a large organization
+              trying to modernize, or a founder figuring out what comes next, we
+              bring frameworks from consulting, instincts from building, and the
+              patience that comes from knowing there are no shortcuts.
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-[#F3EADB]/25">
-              {["Built", "Led", "Advised", "Taught"].map((verb) => (
-                <div key={verb}>
-                  <p className="editorial-italic text-[32px] text-[#E2B08E] leading-none">
-                    {verb}
-                  </p>
-                  <p className="mono text-[10px] uppercase tracking-[0.2em] text-[#F3EADB]/60 mt-2">
-                    companies · strategy · founders · teams
-                  </p>
+            <hr className="mt-12 border-[color:var(--hairline)]" />
+
+            <dl className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-8">
+              {[
+                { label: "Built", value: "Companies" },
+                { label: "Led", value: "Strategy" },
+                { label: "Advised", value: "Founders" },
+                { label: "Taught", value: "Teams" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <dt className="chapter text-[color:var(--accent)] mb-2">{stat.label}</dt>
+                  <dd className="display italic font-light text-[22px] md:text-[28px] text-[color:var(--ink)]">
+                    {stat.value}
+                  </dd>
                 </div>
               ))}
-            </div>
+            </dl>
           </div>
         </div>
       </div>

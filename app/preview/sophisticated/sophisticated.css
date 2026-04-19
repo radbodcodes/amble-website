@@ -1,0 +1,217 @@
+.sophisticated-root {
+  --copper: #9C5E37;
+  --copper-soft: #B57E54;
+  --copper-pale: #E2C4A7;
+  --copper-wash: rgba(156, 94, 55, 0.06);
+  --ink: #1C1815;
+  --ink-soft: #5A4F49;
+  --ink-faint: #8B807A;
+  --paper: #F5F1EB;
+  --paper-warm: #EDE5D9;
+  --paper-deep: #1C1815;
+  --hairline: rgba(28, 24, 21, 0.14);
+  --hairline-soft: rgba(28, 24, 21, 0.08);
+
+  background: var(--paper);
+  color: var(--ink);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.sophisticated-root .serif {
+  font-family: var(--font-sophisticated-serif), "Cormorant Garamond", ui-serif, Georgia, serif;
+  letter-spacing: -0.015em;
+}
+
+.sophisticated-root .sans {
+  font-family: var(--font-sans), "DM Sans", ui-sans-serif, sans-serif;
+  letter-spacing: -0.005em;
+}
+
+.sophisticated-root .mono {
+  font-family: var(--font-mono-display), ui-monospace, "SF Mono", monospace;
+  letter-spacing: 0.02em;
+}
+
+.sophisticated-root .meta {
+  font-family: var(--font-mono-display), ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+}
+
+.sophisticated-root .meta-sm {
+  font-family: var(--font-mono-display), ui-monospace, monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+}
+
+/* Gradient mesh — the single "tech" moment. Imperceptibly slow. */
+.sophisticated-root .mesh {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(226, 196, 167, 0.45) 0%, transparent 38%),
+    radial-gradient(circle at 82% 14%, rgba(156, 94, 55, 0.22) 0%, transparent 42%),
+    radial-gradient(circle at 64% 88%, rgba(181, 126, 84, 0.18) 0%, transparent 48%),
+    radial-gradient(circle at 8% 92%, rgba(226, 196, 167, 0.30) 0%, transparent 40%);
+  animation: mesh-drift 60s ease-in-out infinite alternate;
+  filter: blur(6px);
+}
+
+@keyframes mesh-drift {
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate(-1%, 1%);
+  }
+  100% {
+    background-position: 4% -2%, -3% 2%, 2% 4%, -2% -3%;
+    transform: scale(1.04) translate(1%, -1%);
+  }
+}
+
+/* Reveal animations — slow, considered */
+@keyframes sophisticated-up {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes sophisticated-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.sophisticated-root .reveal {
+  animation: sophisticated-up 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.sophisticated-root .reveal-slow {
+  animation: sophisticated-up 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.sophisticated-root .reveal-fade {
+  animation: sophisticated-in 1.4s ease-out both;
+}
+
+.sophisticated-root .d-100 { animation-delay: 100ms; }
+.sophisticated-root .d-200 { animation-delay: 200ms; }
+.sophisticated-root .d-300 { animation-delay: 300ms; }
+.sophisticated-root .d-400 { animation-delay: 400ms; }
+.sophisticated-root .d-500 { animation-delay: 500ms; }
+.sophisticated-root .d-600 { animation-delay: 600ms; }
+.sophisticated-root .d-700 { animation-delay: 700ms; }
+.sophisticated-root .d-800 { animation-delay: 800ms; }
+
+/* Scroll-triggered reveal */
+@supports (animation-timeline: view()) {
+  .sophisticated-root .scroll-up {
+    animation: sophisticated-up 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+}
+@supports not (animation-timeline: view()) {
+  .sophisticated-root .scroll-up {
+    animation: sophisticated-up 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+/* Corner crosshairs — precision detail */
+.sophisticated-root .crosshair {
+  position: relative;
+}
+.sophisticated-root .crosshair::before,
+.sophisticated-root .crosshair::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+  opacity: 0.5;
+}
+.sophisticated-root .crosshair::before {
+  top: -5px;
+  left: 50%;
+  width: 1px;
+  height: 10px;
+  transform: translateX(-50%);
+}
+.sophisticated-root .crosshair::after {
+  left: -5px;
+  top: 50%;
+  width: 10px;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+/* Text link style */
+.sophisticated-root .link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.4s;
+}
+.sophisticated-root .link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform-origin: right;
+  transform: scaleX(1);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sophisticated-root .link:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+.sophisticated-root .link .arrow {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sophisticated-root .link:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Section rules */
+.sophisticated-root hr.hair {
+  border: none;
+  height: 1px;
+  background: var(--hairline);
+  margin: 0;
+}
+
+/* Quiet hover lift for cards */
+.sophisticated-root .card {
+  transition: border-color 0.5s, background 0.5s;
+}
+.sophisticated-root .card:hover {
+  border-color: rgba(156, 94, 55, 0.35);
+  background: rgba(255, 255, 255, 0.5);
+}
+.sophisticated-root .card:hover .card-arrow {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+.sophisticated-root .card-arrow {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s;
+  opacity: 0.4;
+}

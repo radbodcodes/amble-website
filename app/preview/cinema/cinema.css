@@ -1,0 +1,189 @@
+.cinema-root {
+  --copper: #C47A4E;
+  --copper-deep: #8E4A28;
+  --copper-pale: #E8C5A3;
+  --ink: #1A1612;
+  --ink-soft: #4D433B;
+  --ink-faint: #8A8078;
+  --paper: #EDE5D6;
+  --paper-warm: #E3D9C5;
+  --paper-deep: #0F0C08;
+  --shadow: #1A1612;
+  --hairline: rgba(26, 22, 18, 0.2);
+  --hairline-soft: rgba(26, 22, 18, 0.08);
+
+  background: var(--paper-deep);
+  color: var(--paper);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.cinema-root .serif {
+  font-family: var(--font-cinema-serif), "Cormorant Garamond", ui-serif, Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+.cinema-root .mono {
+  font-family: var(--font-mono-cinema), ui-monospace, "SF Mono", monospace;
+  letter-spacing: 0.04em;
+}
+
+.cinema-root .meta {
+  font-family: var(--font-mono-cinema), ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-weight: 500;
+}
+
+.cinema-root .meta-sm {
+  font-family: var(--font-mono-cinema), ui-monospace, monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-weight: 500;
+}
+
+/* Duotone photo filter — copper shadows, bone highlights */
+.cinema-root .duotone {
+  filter: sepia(1) saturate(1.4) hue-rotate(-12deg) brightness(0.85) contrast(1.25);
+  mix-blend-mode: normal;
+}
+.cinema-root .duotone-dark {
+  filter: sepia(1) saturate(1.2) hue-rotate(-18deg) brightness(0.55) contrast(1.4);
+}
+
+/* Film grain overlay */
+.cinema-root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
+  mix-blend-mode: overlay;
+  animation: grain 8s steps(6) infinite;
+}
+
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -5%); }
+  20% { transform: translate(5%, 5%); }
+  30% { transform: translate(-2%, 3%); }
+  40% { transform: translate(3%, -2%); }
+  50% { transform: translate(-4%, 2%); }
+  60% { transform: translate(2%, -4%); }
+  70% { transform: translate(-2%, -3%); }
+  80% { transform: translate(4%, 3%); }
+  90% { transform: translate(-3%, 2%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Kenburns zoom — cinematic subtle movement */
+@keyframes kenburns {
+  0% { transform: scale(1.08) translate(0, 0); }
+  100% { transform: scale(1.14) translate(-1%, -1%); }
+}
+
+.cinema-root .kenburns { animation: kenburns 20s ease-in-out infinite alternate; }
+
+/* Reveal */
+@keyframes cinema-up {
+  0% { opacity: 0; transform: translateY(20px); filter: blur(3px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes cinema-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.cinema-root .reveal { animation: cinema-up 1.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.cinema-root .reveal-slow { animation: cinema-up 2.2s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.cinema-root .reveal-fade { animation: cinema-in 1.8s ease-out both; }
+
+.cinema-root .d-100 { animation-delay: 300ms; }
+.cinema-root .d-200 { animation-delay: 500ms; }
+.cinema-root .d-300 { animation-delay: 700ms; }
+.cinema-root .d-400 { animation-delay: 900ms; }
+.cinema-root .d-500 { animation-delay: 1100ms; }
+.cinema-root .d-600 { animation-delay: 1300ms; }
+.cinema-root .d-700 { animation-delay: 1500ms; }
+.cinema-root .d-800 { animation-delay: 1700ms; }
+
+@supports (animation-timeline: view()) {
+  .cinema-root .scroll-up {
+    animation: cinema-up 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+}
+@supports not (animation-timeline: view()) {
+  .cinema-root .scroll-up { animation: cinema-up 1.4s cubic-bezier(0.22, 1, 0.36, 1) both; }
+}
+
+.cinema-root .link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: color 0.4s;
+}
+.cinema-root .link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform-origin: left;
+  transform: scaleX(1);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cinema-root .link .arrow { transition: transform 0.4s; }
+.cinema-root .link:hover .arrow { transform: translateX(6px); }
+
+/* Plate frame — cinematic section container */
+.cinema-root .plate {
+  position: relative;
+  isolation: isolate;
+}
+.cinema-root .plate::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--paper-deep);
+  z-index: 0;
+}
+
+.cinema-root .card {
+  transition: background 0.5s, border-color 0.5s;
+}
+.cinema-root .card:hover {
+  background: rgba(196, 122, 78, 0.04);
+  border-color: var(--copper);
+}
+.cinema-root .card:hover .card-arrow {
+  transform: translateX(5px);
+  opacity: 1;
+}
+.cinema-root .card-arrow { transition: transform 0.5s, opacity 0.5s; opacity: 0.5; }
+
+/* Letterbox bars for cinematic intros */
+.cinema-root .letterbox {
+  position: relative;
+}
+.cinema-root .letterbox::before,
+.cinema-root .letterbox::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: var(--paper-deep);
+  z-index: 5;
+  pointer-events: none;
+}
+.cinema-root .letterbox::before { top: 0; }
+.cinema-root .letterbox::after { bottom: 0; }

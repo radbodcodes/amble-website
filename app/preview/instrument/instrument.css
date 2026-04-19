@@ -1,0 +1,221 @@
+.instrument-root {
+  --copper: #9C5E37;
+  --copper-soft: #B57E54;
+  --copper-bright: #E2A471;
+  --ink: #141310;
+  --ink-soft: #4A453E;
+  --ink-faint: #8B827A;
+  --paper: #F1ECE3;
+  --paper-warm: #E8E0D2;
+  --paper-deep: #141310;
+  --grid: rgba(28, 24, 21, 0.08);
+  --grid-soft: rgba(28, 24, 21, 0.04);
+  --hairline: rgba(28, 24, 21, 0.22);
+  --signal: #C97A44;
+
+  background: var(--paper);
+  color: var(--ink);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.instrument-root .mono {
+  font-family: var(--font-mono-instrument), ui-monospace, "SF Mono", monospace;
+  letter-spacing: 0.02em;
+  font-feature-settings: "ss01", "zero";
+}
+
+.instrument-root .serif {
+  font-family: var(--font-instrument-serif), "Cormorant Garamond", ui-serif, Georgia, serif;
+  letter-spacing: -0.015em;
+}
+
+.instrument-root .meta {
+  font-family: var(--font-mono-instrument), ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+}
+
+.instrument-root .meta-sm {
+  font-family: var(--font-mono-instrument), ui-monospace, monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-weight: 500;
+}
+
+/* Persistent grid underlay — the tech-precision base layer */
+.instrument-root .grid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.3) 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.3) 80%);
+}
+
+.instrument-root .grid-fine {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--grid-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-soft) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.6;
+}
+
+/* Scanline — subtle data-viz accent, horizontal sweep */
+@keyframes scanline {
+  0% { transform: translateY(-10%); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(110%); opacity: 0; }
+}
+
+.instrument-root .scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--copper) 40%, var(--copper) 60%, transparent);
+  animation: scanline 14s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Status pulse */
+@keyframes signal-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+.instrument-root .signal-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--signal);
+  animation: signal-pulse 2.4s ease-in-out infinite;
+  box-shadow: 0 0 8px var(--signal);
+}
+
+/* Number ticker animation */
+@keyframes tick-cycle {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-100%); }
+  50% { transform: translateY(-200%); }
+  75% { transform: translateY(-300%); }
+  100% { transform: translateY(-400%); }
+}
+
+/* Reveal */
+@keyframes instrument-up {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes instrument-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.instrument-root .reveal { animation: instrument-up 1s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.instrument-root .reveal-slow { animation: instrument-up 1.4s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.instrument-root .reveal-fade { animation: instrument-in 1.2s ease-out both; }
+
+.instrument-root .d-100 { animation-delay: 100ms; }
+.instrument-root .d-200 { animation-delay: 200ms; }
+.instrument-root .d-300 { animation-delay: 300ms; }
+.instrument-root .d-400 { animation-delay: 400ms; }
+.instrument-root .d-500 { animation-delay: 500ms; }
+.instrument-root .d-600 { animation-delay: 600ms; }
+.instrument-root .d-700 { animation-delay: 700ms; }
+.instrument-root .d-800 { animation-delay: 800ms; }
+
+@supports (animation-timeline: view()) {
+  .instrument-root .scroll-up {
+    animation: instrument-up 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+}
+@supports not (animation-timeline: view()) {
+  .instrument-root .scroll-up { animation: instrument-up 1s cubic-bezier(0.22, 1, 0.36, 1) both; }
+}
+
+/* Terminal-style prompt */
+.instrument-root .prompt::before {
+  content: "$ ";
+  color: var(--copper);
+}
+
+/* Code-like bracket markers */
+.instrument-root .bracket-open::before { content: "["; color: var(--copper); margin-right: 4px; }
+.instrument-root .bracket-close::after { content: "]"; color: var(--copper); margin-left: 4px; }
+
+.instrument-root .link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s;
+}
+.instrument-root .link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transition: background 0.3s;
+}
+.instrument-root .link .arrow { transition: transform 0.3s; }
+.instrument-root .link:hover .arrow { transform: translateX(4px); }
+
+.instrument-root .card {
+  transition: border-color 0.35s, background 0.35s, transform 0.35s;
+  position: relative;
+}
+.instrument-root .card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 1px;
+  background: var(--copper);
+  opacity: 0;
+  transition: opacity 0.35s, width 0.35s;
+}
+.instrument-root .card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 1px;
+  background: var(--copper);
+  opacity: 0;
+  transition: opacity 0.35s, width 0.35s;
+}
+.instrument-root .card:hover {
+  background: rgba(156, 94, 55, 0.03);
+  border-color: var(--copper);
+}
+.instrument-root .card:hover::before,
+.instrument-root .card:hover::after {
+  opacity: 1;
+  width: 40px;
+}
+.instrument-root .card:hover .card-arrow {
+  transform: translateX(4px);
+  opacity: 1;
+}
+.instrument-root .card-arrow { transition: transform 0.35s, opacity 0.35s; opacity: 0.4; }

@@ -4,45 +4,47 @@ export function EditorialContact() {
   return (
     <section
       id="contact"
-      className="relative px-6 md:px-10 lg:px-14 py-24 md:py-32"
+      className="relative px-6 md:px-10 lg:px-14 pt-28 md:pt-40 pb-24 md:pb-32"
     >
-      <div className="folio text-[#14100D] mb-14">
-        <span>Coda</span>
-        <span>Correspondence</span>
-      </div>
-
-      <div className="grid grid-cols-12 gap-10 lg:gap-20 items-start">
-        <div className="col-span-12 lg:col-span-6 scroll-reveal">
-          <h2 className="editorial text-[clamp(56px,10vw,160px)] leading-[0.9] text-[#14100D]">
-            Ready
-            <br />
-            to
-            <br />
-            <span className="editorial-italic text-[#A8673E]">walk?</span>
+      <div className="max-w-[1320px] mx-auto">
+        <div className="text-center mb-20 md:mb-28 scroll-up">
+          <span className="chapter text-[color:var(--accent)]">— Correspondence —</span>
+          <h2 className="mt-8 display font-light text-[clamp(52px,8vw,128px)] leading-[0.95] text-[color:var(--ink)] tracking-[-0.025em]">
+            Ready to{" "}
+            <span className="italic" style={{ color: "var(--accent)" }}>walk?</span>
           </h2>
-          <hr className="rule-thick my-10" />
-          <p className="serif text-[18px] md:text-[22px] leading-[1.6] text-[#14100D]/85 max-w-[480px]">
-            Tell us where you are and what&apos;s in the way. No paperwork
-            needed. Just a conversation about what matters next.
+          <p className="mt-10 serif text-[17px] md:text-[19px] text-[color:var(--ink-soft)] leading-[1.7] max-w-[620px] mx-auto">
+            Tell us where you are and what is in the way. No paperwork needed.
+            Just a conversation about what matters next.
           </p>
-          <div className="mt-10 space-y-2">
-            <p className="mono text-[10px] uppercase tracking-[0.22em] text-[#14100D]/60">
-              Correspondence, Open Hours
-            </p>
+        </div>
+
+        <hr className="double-rule mb-16 md:mb-20" />
+
+        <div className="grid grid-cols-12 gap-8 md:gap-16">
+          <div className="col-span-12 md:col-span-5 scroll-up">
+            <span className="chapter text-[color:var(--accent)]">Or — directly</span>
             <a
               href="mailto:letswalk@ambleandco.com"
-              className="editorial-italic text-[28px] md:text-[36px] text-[#A8673E] inline-block"
+              className="mt-6 block display italic font-light text-[26px] md:text-[32px] text-[color:var(--accent)] hover:underline underline-offset-[6px] break-all"
             >
               letswalk@ambleandco.com
             </a>
+            <p className="mt-10 serif text-[16px] text-[color:var(--ink-soft)] leading-[1.75] max-w-[420px]">
+              Letters are welcome at any hour. We reply when we have
+              something considered to say.
+            </p>
           </div>
-        </div>
 
-        <div className="col-span-12 lg:col-span-6 scroll-reveal border-2 border-[#14100D] p-6 md:p-10 bg-[#F3EADB]">
-          <p className="mono text-[10px] uppercase tracking-[0.22em] text-[#14100D]/70 mb-4">
-            Letter to the Editors
-          </p>
-          <ContactForm />
+          <div className="col-span-12 md:col-span-7 scroll-up">
+            <div className="border border-[color:var(--hairline)] bg-[color:var(--paper)] p-8 md:p-12">
+              <div className="flex items-baseline justify-between mb-8">
+                <span className="chapter text-[color:var(--accent)]">Form I</span>
+                <span className="label italic text-[color:var(--ink-faint)]">Confidential</span>
+              </div>
+              <ContactForm />
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,31 +1,25 @@
-import Image from "next/image";
-
 export function EditorialInterlude() {
   return (
-    <section className="relative h-[70vh] min-h-[520px] overflow-hidden border-y-4 border-[#14100D]">
-      <Image
-        src="/interlude-city.jpg"
-        alt=""
-        fill
-        className="object-cover grayscale contrast-[1.1]"
-      />
-      <div className="absolute inset-0 bg-[#5C2410] mix-blend-multiply opacity-88" />
-      <div className="absolute inset-0 halftone opacity-20" />
+    <section className="relative px-6 md:px-10 lg:px-14 py-32 md:py-48 bg-[color:var(--paper-warm)]">
+      <div className="max-w-[1100px] mx-auto">
+        <hr className="double-rule mb-16 md:mb-20" />
 
-      <div className="relative z-[2] h-full flex flex-col justify-center items-center px-6 text-center">
-        <p className="mono text-[10px] uppercase tracking-[0.32em] text-[#E2B08E] mb-6">
-          ✦ An Aside ✦
-        </p>
-        <blockquote className="editorial text-[#F3EADB] text-[clamp(32px,6vw,88px)] leading-[1.02] max-w-[1100px]">
-          Technology is easy to acquire.{" "}
-          <span className="editorial-italic text-[#E2B08E]">
-            Turning it into real value
-          </span>{" "}
-          is the hard part.
-        </blockquote>
-        <p className="mt-10 mono text-[10px] uppercase tracking-[0.28em] text-[#F3EADB]/50">
-          — Editors&apos; Note, page 7
-        </p>
+        <div className="text-center scroll-up">
+          <span className="chapter text-[color:var(--accent)]">— Pull Quote —</span>
+          <blockquote className="mt-10 md:mt-14 display font-light text-[clamp(32px,4.2vw,64px)] leading-[1.16] text-[color:var(--ink)] tracking-[-0.02em]">
+            <span className="display italic text-[color:var(--accent)]">&ldquo;</span>
+            Technology is easy to acquire.
+            <br />
+            Turning it into real{" "}
+            <span className="italic" style={{ color: "var(--accent)" }}>value</span> is the hard part.
+            <span className="display italic text-[color:var(--accent)]">&rdquo;</span>
+          </blockquote>
+          <p className="mt-12 label italic text-[color:var(--ink-faint)]">
+            — From &ldquo;A Note on Pace,&rdquo; a thing we keep saying.
+          </p>
+        </div>
+
+        <hr className="double-rule mt-16 md:mt-20" />
       </div>
     </section>
   );
