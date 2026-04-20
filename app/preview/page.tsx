@@ -2,12 +2,40 @@ import Link from "next/link";
 
 const variants = [
   {
+    slug: "maison",
+    name: "Maison",
+    subtitle: "Hermès × 2x4",
+    description:
+      "Couture counter. Ivory and bone with an oxblood accent. Playfair display serif, uppercase tracking, silk-fold hairlines, folio marks, specimen cards instead of city photography. Motion that settles rather than slides.",
+    palette: ["#FBF7F0", "#6B2C2C", "#A58A50"],
+    group: "New direction",
+  },
+  {
+    slug: "apothecary",
+    name: "Apothecary",
+    subtitle: "Aesop labels × dermatology monograph",
+    description:
+      "Clinical dossier. Paper warm white with iodine amber and mercurochrome accents. EB Garamond serif, IBM Plex Mono for data labels. Diagrammatic imagery replaces photos. Footnotes, ruled tables, method notes, n= citations.",
+    palette: ["#FCFBF6", "#B8702C", "#A72929"],
+    group: "New direction",
+  },
+  {
+    slug: "statement",
+    name: "Statement",
+    subtitle: "Jacquemus × Klarna",
+    description:
+      "One loud color. Saturated coral dominates; cream and ink support. Archivo Black oversized display kissing edges, rounded pill nav, tilt-on-hover cards, marquee strip, scale-jump motion. High variance, high contrast.",
+    palette: ["#E67D5C", "#FFF6EE", "#1B1211"],
+    group: "New direction",
+  },
+  {
     slug: "sophisticated",
     name: "Sophisticated",
     subtitle: "Aesop × Anthropic",
     description:
       "The baseline. Editorial serif, monospace meta, subtle gradient mesh, corner crosshairs, dialed-back copper on warm cream. Quiet motion throughout.",
     palette: ["#9C5E37", "#F5F1EB", "#1C1815"],
+    group: "Original four",
   },
   {
     slug: "editorial",
@@ -16,6 +44,7 @@ const variants = [
     description:
       "Magazine aesthetic. Fraunces serif, drop caps, double-rule dividers, numbered chapters, oversized photography. No monospace. Paper grain overlay.",
     palette: ["#8C3A1F", "#F4EEE3", "#1F1A14"],
+    group: "Original four",
   },
   {
     slug: "instrument",
@@ -24,6 +53,7 @@ const variants = [
     description:
       "Tech dialed up. Animated grid, live status indicators, function-call methodology, terminal prompts, capability readout. Precision-instrument undertone.",
     palette: ["#9C5E37", "#F1ECE3", "#141310"],
+    group: "Original four",
   },
   {
     slug: "cinema",
@@ -32,6 +62,7 @@ const variants = [
     description:
       "Full-bleed duotone photography as backdrop. Copper-tinted shadows, kenburns motion, letterbox tick marks, film grain overlay. Dramatic scale.",
     palette: ["#C47A4E", "#0F0C08", "#EDE5D6"],
+    group: "Original four",
   },
 ];
 
@@ -43,17 +74,24 @@ export default function PreviewIndex() {
           · Design Exploration ·
         </p>
         <h1 className="font-serif text-4xl md:text-6xl font-light leading-[1.05] mb-6 tracking-[-0.015em]">
-          Four directions.
+          Seven directions.
         </h1>
         <p className="text-[16px] md:text-[18px] text-[#5C504A] leading-[1.75] max-w-[680px] mb-16">
-          Each keeps the clean, high-class aesthetic with a tech undercurrent —
-          expressed differently. Same copy, same sections, same brand. The live
-          site at ambleandco.com is untouched.
+          Three new directions explore territory the original four did not
+          touch. Maison leans luxury couture. Apothecary leans clinical
+          dossier. Statement leans saturated confidence. The original four
+          remain below for comparison. Live site at ambleandco.com is
+          untouched.
         </p>
 
         <ul className="flex flex-col gap-6">
-          {variants.map((v) => (
+          {variants.map((v, i) => (
             <li key={v.slug}>
+              {(i === 0 || v.group !== variants[i - 1]?.group) && (
+                <h2 className="mt-8 first:mt-0 mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-[#9C5E37] font-mono">
+                  · {v.group} ·
+                </h2>
+              )}
               <Link
                 href={`/preview/${v.slug}`}
                 className="group block bg-white/60 backdrop-blur-sm border border-[#9C5E37]/15 p-8 md:p-10 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(28,24,21,0.08)] hover:border-[#9C5E37]/40"
