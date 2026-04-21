@@ -64,6 +64,15 @@ const variants = [
     palette: ["#C47A4E", "#0F0C08", "#EDE5D6"],
     group: "Original four",
   },
+  {
+    slug: "cinema-evolved",
+    name: "Cinema (evolved)",
+    subtitle: "Gattaca × mission control",
+    description:
+      "Sci-fi iteration on cinema. Sophisticated high-end sci-fi aesthetic, three-font system (serif + mono + Space Grotesk data), page-length scroll gradient from dark hero to warm-wheat footer, SEQ labels, orbital marks, blueprint grid.",
+    palette: ["#CC8842", "#0F0C08", "#D4BE8E"],
+    group: "Iterations",
+  },
 ];
 
 export default function PreviewIndex() {

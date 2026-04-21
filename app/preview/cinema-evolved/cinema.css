@@ -1,0 +1,448 @@
+.cinema-root {
+  /* Sci-fi cinema — Gattaca amber + cool architectural blue */
+  --copper: #CC8842;
+  --copper-deep: #8B4F1D;
+  --copper-pale: #E2BE8F;
+  --copper-glow: #F2C27E;
+  --ember: #D46F34;
+  --azure: #5A7A8C;
+  --azure-deep: #2E4654;
+  --azure-glow: #8FA9B8;
+  --slate: #1C2329;
+  --slate-deep: #10161B;
+  --ink: #18130A;
+  --ink-soft: #332B1F;
+  --ink-faint: #8A7F6E;
+  --paper: #F3E9D4;
+  --paper-warm: #E2D1B2;
+  --paper-deep: #14100A;
+  /* Friendly morning — warm wheat, lit but never paper-bright.
+     Between moody ochre and cream — inviting. */
+  --morning: #D4BE8E;
+  --morning-warm: #DECB9F;
+  --morning-deep: #A48B5D;
+  --smoke: rgba(243, 233, 212, 0.65);
+  --smoke-cool: rgba(143, 169, 184, 0.7);
+  --hairline: rgba(243, 233, 212, 0.18);
+  --hairline-cool: rgba(143, 169, 184, 0.22);
+  --hairline-soft: rgba(243, 233, 212, 0.08);
+
+  /* Page-long night-to-morning grade.
+     Dawn begins earlier in interlude, peak lands at moody ochre --morning,
+     not bright cream. The film stays in low light. */
+  background:
+    linear-gradient(
+      180deg,
+      var(--paper-deep) 0%,
+      var(--paper-deep) 16%,
+      #1C1610 28%,
+      #2A2119 40%,
+      #453824 50%,
+      #6D5A38 60%,
+      #957C52 68%,
+      #B79B6B 76%,
+      #C8AC7C 82%,
+      var(--morning) 86%,
+      var(--morning) 100%
+    );
+  color: var(--paper);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.cinema-root .serif {
+  font-family: var(--font-cinema-serif), "Cormorant Garamond", ui-serif, Georgia, serif;
+  letter-spacing: -0.03em;
+}
+
+.cinema-root .mono {
+  font-family: var(--font-mono-cinema), ui-monospace, "SF Mono", monospace;
+  letter-spacing: 0.04em;
+}
+
+.cinema-root .meta {
+  font-family: var(--font-mono-cinema), ui-monospace, monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  font-weight: 500;
+}
+
+.cinema-root .meta-sm {
+  font-family: var(--font-mono-cinema), ui-monospace, monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.34em;
+  font-weight: 500;
+}
+
+/* Warm duotone — amber-print, real color warmth */
+.cinema-root .duotone {
+  filter: sepia(0.7) saturate(1.35) hue-rotate(-5deg) brightness(0.86) contrast(1.18);
+  mix-blend-mode: normal;
+}
+.cinema-root .duotone-dark {
+  filter: sepia(0.85) saturate(1.25) hue-rotate(-8deg) brightness(0.55) contrast(1.38);
+}
+
+/* Film grain overlay — heavier print grain */
+.cinema-root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.11;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
+  mix-blend-mode: overlay;
+  animation: grain 8s steps(6) infinite;
+}
+
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -5%); }
+  20% { transform: translate(5%, 5%); }
+  30% { transform: translate(-2%, 3%); }
+  40% { transform: translate(3%, -2%); }
+  50% { transform: translate(-4%, 2%); }
+  60% { transform: translate(2%, -4%); }
+  70% { transform: translate(-2%, -3%); }
+  80% { transform: translate(4%, 3%); }
+  90% { transform: translate(-3%, 2%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Kenburns — slow, the picture breathes */
+@keyframes kenburns {
+  0% { transform: scale(1.06) translate(0, 0); }
+  100% { transform: scale(1.10) translate(-0.5%, -0.5%); }
+}
+
+.cinema-root .kenburns { animation: kenburns 32s ease-in-out infinite alternate; }
+
+/* Reveal */
+@keyframes cinema-up {
+  0% { opacity: 0; transform: translateY(20px); filter: blur(3px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes cinema-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.cinema-root .reveal { animation: cinema-up 1.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.cinema-root .reveal-slow { animation: cinema-up 2.2s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.cinema-root .reveal-fade { animation: cinema-in 1.8s ease-out both; }
+
+.cinema-root .d-100 { animation-delay: 300ms; }
+.cinema-root .d-200 { animation-delay: 500ms; }
+.cinema-root .d-300 { animation-delay: 700ms; }
+.cinema-root .d-400 { animation-delay: 900ms; }
+.cinema-root .d-500 { animation-delay: 1100ms; }
+.cinema-root .d-600 { animation-delay: 1300ms; }
+.cinema-root .d-700 { animation-delay: 1500ms; }
+.cinema-root .d-800 { animation-delay: 1700ms; }
+
+@supports (animation-timeline: view()) {
+  .cinema-root .scroll-up {
+    animation: cinema-up 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+}
+@supports not (animation-timeline: view()) {
+  .cinema-root .scroll-up { animation: cinema-up 1.4s cubic-bezier(0.22, 1, 0.36, 1) both; }
+}
+
+.cinema-root .link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: color 0.4s;
+}
+.cinema-root .link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform-origin: left;
+  transform: scaleX(1);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cinema-root .link .arrow { transition: transform 0.4s; }
+.cinema-root .link:hover .arrow { transform: translateX(6px); }
+
+/* Plate frame — cinematic section container */
+.cinema-root .plate {
+  position: relative;
+  isolation: isolate;
+}
+.cinema-root .plate::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--paper-deep);
+  z-index: 0;
+}
+
+.cinema-root .card {
+  transition: background 0.5s, border-color 0.5s, box-shadow 0.5s;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45);
+}
+.cinema-root .card:hover {
+  background: rgba(184, 118, 62, 0.06);
+  border-color: var(--copper);
+  box-shadow: 0 40px 100px rgba(184, 118, 62, 0.15), 0 40px 100px rgba(0, 0, 0, 0.5);
+}
+.cinema-root .card:hover .card-arrow {
+  transform: translateX(5px);
+  opacity: 1;
+}
+.cinema-root .card-arrow { transition: transform 0.5s, opacity 0.5s; opacity: 0.5; }
+
+/* Letterbox bars — permanent widescreen frame */
+.cinema-root .letterbox {
+  position: relative;
+}
+.cinema-root .letterbox::before,
+.cinema-root .letterbox::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: var(--paper-deep);
+  z-index: 5;
+  pointer-events: none;
+}
+.cinema-root .letterbox::before { top: 0; }
+.cinema-root .letterbox::after { bottom: 0; }
+
+/* LINK SYSTEM — serif italic + copper + underline = always clickable.
+   Mono-caps meta = never clickable. A hard binary. */
+
+/* Primary link — large CTA, serif italic, copper-glow, underlined, with arrow */
+.cinema-root .link-cta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 14px;
+  font-family: var(--font-cinema-serif), "Cormorant Garamond", ui-serif, Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 26px;
+  letter-spacing: -0.015em;
+  color: var(--copper-glow);
+  text-decoration: underline;
+  text-decoration-color: var(--copper);
+  text-underline-offset: 8px;
+  text-decoration-thickness: 1.5px;
+  transition: color 0.4s, text-decoration-color 0.4s;
+  cursor: pointer;
+}
+.cinema-root .link-cta:hover {
+  color: var(--paper);
+  text-decoration-color: var(--paper);
+}
+.cinema-root .link-cta .arrow {
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cinema-root .link-cta:hover .arrow {
+  transform: translateX(8px);
+}
+
+/* Inline link — smaller, inline with body copy */
+.cinema-root .link-inline {
+  font-family: var(--font-cinema-serif), "Cormorant Garamond", ui-serif, Georgia, serif;
+  font-style: italic;
+  color: var(--copper-glow);
+  text-decoration: underline;
+  text-decoration-color: var(--copper);
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1.2px;
+  transition: color 0.3s, text-decoration-color 0.3s;
+}
+.cinema-root .link-inline:hover {
+  color: var(--paper);
+  text-decoration-color: var(--paper);
+}
+
+/* Nav link — text, subtle underline on hover */
+.cinema-root .link-nav {
+  position: relative;
+  color: var(--paper);
+  opacity: 0.8;
+  font-family: var(--font-cinema-serif), "Cormorant Garamond", ui-serif, Georgia, serif;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  transition: opacity 0.3s, color 0.3s;
+}
+.cinema-root .link-nav::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1px;
+  background: var(--copper-glow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cinema-root .link-nav:hover {
+  color: var(--copper-glow);
+  opacity: 1;
+}
+.cinema-root .link-nav:hover::after { transform: scaleX(1); }
+
+/* GEOMETRIC DATA VOICE — Space Grotesk, tight tracking, technical */
+.cinema-root .data {
+  font-family: var(--font-cinema-data), "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-feature-settings: "tnum";
+}
+.cinema-root .data-sm {
+  font-family: var(--font-cinema-data), "Space Grotesk", ui-sans-serif, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-feature-settings: "tnum";
+}
+.cinema-root .data-num {
+  font-family: var(--font-cinema-data), "Space Grotesk", ui-sans-serif, sans-serif;
+  font-weight: 400;
+  font-feature-settings: "tnum";
+  letter-spacing: 0.02em;
+}
+
+/* HUD panel — cockpit readout, right-aligned vertical stack */
+.cinema-root .hud {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 18px;
+  border: 1px solid var(--hairline-cool);
+  background: rgba(16, 22, 27, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.cinema-root .hud .hud-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.cinema-root .hud .hud-label {
+  color: var(--azure-glow);
+  opacity: 0.7;
+}
+.cinema-root .hud .hud-value {
+  color: var(--copper-glow);
+}
+
+/* Orbit — slow-rotating thin-line circle */
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.cinema-root .orbit {
+  animation: orbit 60s linear infinite;
+  transform-origin: center;
+}
+.cinema-root .orbit-slow {
+  animation: orbit 120s linear infinite;
+  transform-origin: center;
+}
+
+/* Crosshair — longer-arm diagnostic mark */
+.cinema-root .crosshair {
+  position: relative;
+  width: 36px;
+  height: 36px;
+}
+.cinema-root .crosshair::before,
+.cinema-root .crosshair::after {
+  content: "";
+  position: absolute;
+  background: var(--azure-glow);
+  opacity: 0.6;
+}
+.cinema-root .crosshair::before {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-0.5px);
+}
+.cinema-root .crosshair::after {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform: translateY(-0.5px);
+}
+
+/* Slate section — cool sci-fi scene (Act II Method).
+   Semi-transparent so the page-gradient warms through it
+   while keeping the architectural blueprint chill. */
+.cinema-root .slate-section {
+  background: linear-gradient(
+    180deg,
+    rgba(16, 22, 27, 0.55) 0%,
+    rgba(16, 22, 27, 0.35) 60%,
+    rgba(16, 22, 27, 0.0) 100%
+  );
+  color: var(--paper);
+}
+.cinema-root .slate-section .hairline-bordered {
+  border-color: var(--hairline-cool);
+}
+
+/* Morning section — the film's golden-hour scene, dusty ochre not cream */
+.cinema-root .paper-section {
+  background: var(--morning);
+  color: var(--ink);
+}
+.cinema-root .paper-section .hairline {
+  background: var(--ink);
+  opacity: 0.18;
+}
+.cinema-root .paper-section .link-inline,
+.cinema-root .paper-section .link-cta {
+  color: var(--copper-deep);
+  text-decoration-color: var(--copper);
+}
+.cinema-root .paper-section .link-inline:hover,
+.cinema-root .paper-section .link-cta:hover {
+  color: var(--ink);
+  text-decoration-color: var(--ink);
+}
+
+/* Clickable card — whole article becomes a link */
+.cinema-root .card-link {
+  position: relative;
+  display: block;
+  transition: transform 0.5s, background 0.5s, border-color 0.5s, box-shadow 0.5s;
+  cursor: pointer;
+}
+.cinema-root .card-link:hover {
+  transform: translateY(-3px);
+}
+.cinema-root .card-link:hover .card-cta {
+  color: var(--copper-glow);
+}
+.cinema-root .card-link:hover .card-cta .arrow {
+  transform: translateX(6px);
+}
+.cinema-root .card-cta {
+  transition: color 0.4s;
+}
+.cinema-root .card-cta .arrow { transition: transform 0.4s; }
