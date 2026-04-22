@@ -6,6 +6,27 @@ const steps = [
   { letter: "E", label: "Evolve", description: "We stay as your strategy adapts. Ongoing iteration, capability building, and support as your team grows." },
 ];
 
+function Orb({ letter }: { letter: string }) {
+  return (
+    <div className="relative flex items-center justify-center w-[120px] h-[120px] md:w-[140px] md:h-[140px] flex-shrink-0">
+      <svg viewBox="0 0 200 200" className="absolute inset-0 orbit-slow">
+        <circle cx="100" cy="100" r="96" stroke="var(--azure-glow)" strokeWidth="1" fill="none" strokeDasharray="3 5" opacity="0.85" />
+        <circle cx="100" cy="4" r="3.5" fill="var(--copper-glow)" />
+        <circle cx="100" cy="196" r="1.8" fill="var(--copper-glow)" opacity="0.75" />
+      </svg>
+      <svg viewBox="0 0 200 200" className="absolute inset-0 orbit">
+        <circle cx="100" cy="100" r="78" stroke="var(--copper)" strokeWidth="0.9" fill="none" opacity="0.75" />
+      </svg>
+      <span
+        className="serif font-light text-[64px] md:text-[76px] leading-none tracking-tight relative"
+        style={{ color: "var(--copper-glow)" }}
+      >
+        {letter}
+      </span>
+    </div>
+  );
+}
+
 export function CinemaMethodology() {
   return (
     <section
@@ -23,7 +44,7 @@ export function CinemaMethodology() {
       />
 
       <div className="relative max-w-[1320px] mx-auto">
-        <div className="mb-20 md:mb-28 max-w-[920px] scroll-up">
+        <div className="mb-16 md:mb-20 max-w-[920px] scroll-up">
           <div className="flex items-center gap-6 mb-8">
             <span className="data text-[color:var(--azure-glow)]">
               SEQ.03 / METHOD
@@ -42,45 +63,49 @@ export function CinemaMethodology() {
           </h2>
         </div>
 
-        {/* Phase steps — orbital thin-line circle around each letter */}
-        <ol className="grid grid-cols-12 gap-y-0 border-t border-[color:var(--hairline-cool)]">
-          {steps.map((step, i) => (
-            <li
+        {/* Row 1: A M B */}
+        <div className="grid grid-cols-12 gap-8 md:gap-10 border-t border-[color:var(--hairline-cool)] pt-12 md:pt-14">
+          {steps.slice(0, 3).map((step, i) => (
+            <article
               key={step.letter}
-              className="col-span-12 py-14 md:py-20 border-b border-[color:var(--hairline-cool)] grid grid-cols-12 gap-x-8 gap-y-4 items-center group scroll-up"
+              className="col-span-12 md:col-span-4 flex flex-col scroll-up group"
             >
-              {/* Orbital letter — thin ring + phase code */}
-              <div className="col-span-12 md:col-span-5 flex items-center gap-6 md:gap-10">
-                <div className="relative flex items-center justify-center w-[140px] h-[140px] md:w-[200px] md:h-[200px] flex-shrink-0">
-                  <svg viewBox="0 0 200 200" className="absolute inset-0 orbit-slow">
-                    <circle cx="100" cy="100" r="96" stroke="var(--azure-glow)" strokeWidth="0.6" fill="none" strokeDasharray="2 6" opacity="0.6" />
-                    <circle cx="100" cy="4" r="2" fill="var(--copper-glow)" />
-                  </svg>
-                  <svg viewBox="0 0 200 200" className="absolute inset-0 orbit">
-                    <circle cx="100" cy="100" r="78" stroke="var(--copper)" strokeWidth="0.5" fill="none" opacity="0.5" />
-                  </svg>
-                  <span
-                    className="serif font-light text-[76px] md:text-[112px] leading-none tracking-tight relative"
-                    style={{ color: "var(--copper-glow)" }}
-                  >
-                    {step.letter}
-                  </span>
-                </div>
-                <div className="flex-1">
-                  <span className="data-num text-[11px] text-[color:var(--azure-glow)]/70 block mb-2">
-                    PHASE {String(i + 1).padStart(2, "0")} / 05
-                  </span>
-                  <span className="serif font-light text-[28px] md:text-[42px] text-[color:var(--paper)] tracking-[-0.02em] transition-colors duration-500 group-hover:text-[color:var(--copper-glow)]">
-                    {step.label}
-                  </span>
-                </div>
-              </div>
-              <p className="col-span-12 md:col-span-7 text-[15px] md:text-[17px] text-[color:var(--paper)]/75 leading-[1.75]">
+              <Orb letter={step.letter} />
+              <span className="data-num text-[10px] text-[color:var(--azure-glow)]/70 mt-6 mb-1">
+                PHASE {String(i + 1).padStart(2, "0")} / 05
+              </span>
+              <h3 className="serif font-light text-[30px] md:text-[36px] text-[color:var(--paper)] tracking-[-0.02em] leading-none mb-5 transition-colors duration-500 group-hover:text-[color:var(--copper-glow)]">
+                {step.label}
+              </h3>
+              <p className="text-[14px] md:text-[15px] text-[color:var(--paper)]/75 leading-[1.75] max-w-[360px]">
                 {step.description}
               </p>
-            </li>
+            </article>
           ))}
-        </ol>
+        </div>
+
+        {/* Row 2: L E — centered with gutters */}
+        <div className="grid grid-cols-12 gap-8 md:gap-10 border-t border-[color:var(--hairline-cool)] pt-12 md:pt-14 mt-12 md:mt-14">
+          <div className="hidden md:block md:col-span-2" />
+          {steps.slice(3).map((step, i) => (
+            <article
+              key={step.letter}
+              className="col-span-12 md:col-span-4 flex flex-col scroll-up group"
+            >
+              <Orb letter={step.letter} />
+              <span className="data-num text-[10px] text-[color:var(--azure-glow)]/70 mt-6 mb-1">
+                PHASE {String(i + 4).padStart(2, "0")} / 05
+              </span>
+              <h3 className="serif font-light text-[30px] md:text-[36px] text-[color:var(--paper)] tracking-[-0.02em] leading-none mb-5 transition-colors duration-500 group-hover:text-[color:var(--copper-glow)]">
+                {step.label}
+              </h3>
+              <p className="text-[14px] md:text-[15px] text-[color:var(--paper)]/75 leading-[1.75] max-w-[360px]">
+                {step.description}
+              </p>
+            </article>
+          ))}
+          <div className="hidden md:block md:col-span-2" />
+        </div>
       </div>
     </section>
   );

@@ -69,8 +69,8 @@ const variants = [
     name: "Cinema (evolved)",
     subtitle: "Gattaca × mission control",
     description:
-      "Sci-fi iteration on cinema. Sophisticated high-end sci-fi aesthetic, three-font system (serif + mono + Space Grotesk data), page-length scroll gradient from dark hero to warm-wheat footer, SEQ labels, orbital marks, blueprint grid.",
-    palette: ["#CC8842", "#0F0C08", "#D4BE8E"],
+      "Sci-fi iteration on cinema. Three-font system, page-length gradient from warm night through desaturated bridge into pale dusty-blue morning sky. Copper typography on cool ground delivers the editorial warm-on-cool payoff. SEQ labels, orbital marks, blueprint grid.",
+    palette: ["#CC8842", "#0F0C08", "#E7DCC7"],
     group: "Iterations",
   },
 ];

@@ -16,11 +16,14 @@
   --paper: #F3E9D4;
   --paper-warm: #E2D1B2;
   --paper-deep: #14100A;
-  /* Friendly morning — warm wheat, lit but never paper-bright.
-     Between moody ochre and cream — inviting. */
-  --morning: #D4BE8E;
-  --morning-warm: #DECB9F;
-  --morning-deep: #A48B5D;
+  /* Plaster morning — warm limewash, not amber.
+     Desaturated cream, high luminance, reads as morning light
+     hitting a plastered wall. Warm enough to live with copper,
+     dialed down enough to feel hopeful rather than saturated. */
+  --morning: #E7DCC7;
+  --morning-warm: #EFE5D2;
+  --morning-deep: #A89678;
+  --morning-hairline: #5C4F3C;
   --smoke: rgba(243, 233, 212, 0.65);
   --smoke-cool: rgba(143, 169, 184, 0.7);
   --hairline: rgba(243, 233, 212, 0.18);
@@ -34,15 +37,15 @@
     linear-gradient(
       180deg,
       var(--paper-deep) 0%,
-      var(--paper-deep) 16%,
-      #1C1610 28%,
-      #2A2119 40%,
-      #453824 50%,
-      #6D5A38 60%,
-      #957C52 68%,
-      #B79B6B 76%,
-      #C8AC7C 82%,
-      var(--morning) 86%,
+      var(--paper-deep) 20%,
+      #1A140D 32%,
+      #241D14 44%,
+      #2E251B 56%,
+      #3A2E20 66%,
+      #5A4930 72%,
+      #8F7A4D 78%,
+      #BAA378 84%,
+      var(--morning) 90%,
       var(--morning) 100%
     );
   color: var(--paper);
@@ -406,7 +409,8 @@
   border-color: var(--hairline-cool);
 }
 
-/* Morning section — the film's golden-hour scene, dusty ochre not cream */
+/* Morning section — cool sky reveal after the warm night.
+   Warm ink + copper links on pale blue ground. Editorial tension. */
 .cinema-root .paper-section {
   background: var(--morning);
   color: var(--ink);
