@@ -5,6 +5,15 @@ Next.js 16 (App Router), TypeScript, Tailwind CSS v4, shadcn/ui, Framer Motion, 
 GitHub repo: radbodcodes/amble-website.
 Next.js 16 has breaking changes from training data. Check `node_modules/next/dist/docs/` for current API docs before writing code.
 
+## Routes
+- `app/page.tsx` — main marketing page (section order below)
+- `app/blog/` — blog index
+- `app/preview/` — design-exploration variants: 8 routes (apothecary, cinema,
+  cinema-evolved, editorial, instrument, maison, sophisticated, statement) + index page
+
+## Branch status
+Repo may be on `design-exploration` (the preview variants); merge-or-abandon decision pending with Nick. Deploys ship from `main` only — check the current branch (`git branch --show-current`) before deploying.
+
 ## Components
 ```
 components/
@@ -31,10 +40,11 @@ Hero > Outcomes > Interlude > Methodology > About > ContactSection > Footer (see
 
 ## Dev Workflow
 - Dev server: `npm run dev -- -p 3456`
+- No test suite (content/marketing site) — verify changes by eye in the dev server.
 - Add shadcn component: `npx shadcn@latest add <component>`
 - After editing any component: `kill $(lsof -t -i:3456); rm -rf .next; npm run dev -- -p 3456` — Turbopack caches server-rendered HTML and causes hydration errors if you skip this.
 - Wait for `GET / 200` in terminal before telling user to hard refresh.
-- Deploy: `git push origin main && npx vercel --prod`
+- Deploy: production ships from `main`. Check the current branch first (`git branch --show-current`) — repo may be on `design-exploration`. From main: `git push origin main && npx vercel --prod`
 - Terminal copy-paste adds unwanted spaces. Write clean .txt files to Desktop for external editing.
 
 ## Domains
