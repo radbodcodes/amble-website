@@ -45,7 +45,6 @@ Hero > Outcomes > Interlude > Methodology > About > ContactSection > Footer (see
 - After editing any component: `kill $(lsof -t -i:3456); rm -rf .next; npm run dev -- -p 3456` — Turbopack caches server-rendered HTML and causes hydration errors if you skip this.
 - Wait for `GET / 200` in terminal before telling user to hard refresh.
 - Deploy: production ships from `main`. Check the current branch first (`git branch --show-current`) — repo may be on `design-exploration`. From main: `git push origin main && npx vercel --prod`
-- Terminal copy-paste adds unwanted spaces. Write clean .txt files to Desktop for external editing.
 
 ## Domains
 - ambleandco.com (primary), ambleand.co (redirect), both on Vercel
@@ -62,8 +61,6 @@ Hero > Outcomes > Interlude > Methodology > About > ContactSection > Footer (see
 - AMBLE methodology: Assess, Map, Build, Launch, Evolve
 
 ## Copy Voice
-- Direct, strategic, plain-language. No filler, no vague claims.
-- Avoid em dashes. Use periods, commas, or fragments.
 - Outcome-led card copy: For line (who), Headline (what service), Description (problem + what we offer)
 - Iterative copy review: draft, user feedback, revise, implement. Don't batch multiple copy changes without approval.
 
