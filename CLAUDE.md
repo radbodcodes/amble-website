@@ -5,6 +5,9 @@ Next.js 16 (App Router), TypeScript, Tailwind CSS v4, shadcn/ui, Framer Motion, 
 GitHub repo: radbodcodes/amble-website.
 Next.js 16 has breaking changes from training data. Check `node_modules/next/dist/docs/` for current API docs before writing code.
 
+## Branch status
+The working copy sits on `design-exploration` (the preview variants, last commit 5 July 2026). `main` holds the live site: its last site-code commit is `eaed559` (8 April 2026), its later commits touch only CLAUDE.md and AGENTS.md, and the last production deploy is also 8 April. Merging or dropping the branch is Nick's open decision. While the repo is off `main`, `update web` skips it (the skill commits and pushes only from `main`). Check `git branch --show-current` before any deploy.
+
 ## Components
 ```
 components/
@@ -34,7 +37,7 @@ Hero > Outcomes > Interlude > Methodology > About > ContactSection > Footer (see
 - Add shadcn component: `npx shadcn@latest add <component>`
 - After editing any component: `kill $(lsof -t -i:3456); rm -rf .next; npm run dev -- -p 3456` — Turbopack caches server-rendered HTML and causes hydration errors if you skip this.
 - Wait for `GET / 200` in terminal before telling user to hard refresh.
-- Deploy: `git push origin main && npx vercel --prod`
+- Deploy: from `main`, run `git push origin main && npx vercel --prod`. Treat `npx vercel --prod` as the deploy: this site is an exception to the root CLAUDE.md rule that pushes deploy. No push from April to July 2026 produced a deploy or a preview (`vercel ls amble-website` on 2026-10-12 listed only four production deploys, all from 7 and 8 April). After any push, run `vercel ls amble-website`; a build you did not start means a Git connection now exists and this line needs updating. Check the branch first (see Branch status).
 - Terminal copy-paste adds unwanted spaces. Write clean .txt files to Desktop for external editing.
 
 ## Domains
